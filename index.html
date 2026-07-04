@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WEXXIM — Integrated Malaysian Hardwood Manufacturer & Exporter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Pontano+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#ECE8DD; --paper-2:#E4DFD1; --paper-3:#DCD6C6;
+    --ink:#1E2A22; --ink-soft:#606A5B; --line:#D7D1C2;
+    --forest:#33503A; --forest-deep:#20362A; --forest-dark:#17281D;
+    --leaf:#33503A; --leaf-bright:#C2A878; --timber:#C2A878; --timber-soft:#CFBB90;
+    --fill-bg:rgba(180,130,60,.15); --fill:#8A6428;
+    --f-d:"Fraunces",Georgia,serif; --f-b:"Pontano Sans",sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--f-b); background:var(--paper); color:var(--ink); line-height:1.7; overflow-x:hidden; }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  ::selection{ background:var(--leaf); color:#fff; }
+  .wrap{ max-width:1180px; margin:0 auto; }
+  section{ padding:4rem 1.4rem; }
+  .eyebrow{ font-size:.66rem; letter-spacing:.28em; text-transform:uppercase; color:var(--leaf); display:flex; align-items:center; gap:.6rem; font-weight:500; }
+  .eyebrow::before{ content:""; width:24px; height:1px; background:var(--leaf); }
+  h2{ font-family:var(--f-d); font-weight:500; font-size:2rem; line-height:1.12; letter-spacing:-.015em; margin-top:.5rem; }
+  h2 em{ font-style:italic; font-weight:400; color:var(--timber); }
+  .intro{ color:var(--ink-soft); font-weight:300; max-width:60ch; margin-top:.8rem; }
+  .btn{ display:inline-flex; align-items:center; gap:.5rem; background:var(--forest); color:#F4F2EA; padding:.9rem 1.7rem; border-radius:3px; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600; transition:.4s; cursor:pointer; border:none; }
+  .btn:hover{ background:var(--forest-deep); transform:translateY(-2px); }
+  .btn.ghost{ background:transparent; color:#F4F2EA; box-shadow:inset 0 0 0 1px rgba(244,242,234,.55); }
+  .btn.ghost:hover{ background:rgba(244,242,234,.12); }
+  .reveal{ opacity:0; transform:translateY(22px); transition:.9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:none; }
+  .fill{ background:var(--fill-bg); color:var(--fill); border:1px dashed rgba(138,100,40,.45); border-radius:3px; padding:.05em .5em; font-style:normal; font-weight:500; white-space:nowrap; }
+  nav{ position:absolute; top:0; left:0; right:0; z-index:30; display:flex; justify-content:space-between; align-items:center; padding:1.1rem 1.4rem; }
+  nav img{ height:46px; filter:brightness(0) invert(1); }
+  .nav-links{ display:none; gap:1.3rem; align-items:center; }
+  .nav-links a{ color:rgba(244,242,234,.92); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; }
+  .hero{ position:relative; min-height:96svh; display:flex; flex-direction:column; justify-content:flex-end; padding:2rem 1.4rem 3.2rem; overflow:hidden; color:#F4F2EA; }
+  .hero__bg{ position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; background-image:url("https://video.squarespace-cdn.com/content/v1/6a3104495e46eb5dfa0b544b/f2fd72dd-6fb2-4d33-82ef-90a40888818e/thumbnail"); filter:saturate(1.15) brightness(1.02); animation:kb 24s ease-in-out infinite alternate; }
+  @keyframes kb{ from{transform:scale(1.06)} to{transform:scale(1.16) translateY(-2%)} }
+  .hero__grade{ position:absolute; inset:0; z-index:1; background:linear-gradient(to top, rgba(21,42,26,.82), rgba(21,42,26,.15) 55%, rgba(21,42,26,.25)); }
+  .hero__in{ position:relative; z-index:5; }
+  .flag{ font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--leaf-bright); font-weight:500; }
+  .hero h1{ font-family:var(--f-d); font-weight:500; font-size:2.9rem; line-height:1.0; letter-spacing:-.015em; margin-top:1rem; text-shadow:0 2px 30px rgba(0,0,0,.35); }
+  .hero h1 em{ font-style:italic; font-weight:400; color:var(--leaf-bright); }
+  .hero p{ margin-top:1.2rem; max-width:46ch; font-weight:300; color:rgba(244,242,234,.92); }
+  .hero .cta{ display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.6rem; }
+  .stats{ background:var(--paper-2); border-bottom:1px solid var(--line); }
+  .stats .wrap{ display:grid; grid-template-columns:repeat(2,1fr);
