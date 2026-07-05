@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WEXXIM — Integrated Malaysian Hardwood Manufacturer & Exporter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Pontano+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#ECE8DD; --paper-2:#E4DFD1; --paper-3:#DCD6C6;
+    --ink:#1E2A22; --ink-soft:#606A5B; --line:#D7D1C2;
+    --forest:#33503A; --forest-deep:#20362A; --forest-dark:#17281D;
+    --leaf:#33503A; --leaf-bright:#C2A878; --timber:#C2A878; --timber-soft:#CFBB90;
+    --fill-bg:rgba(180,130,60,.15); --fill:#8A6428;
+    --f-d:"Fraunces",Georgia,serif; --f-b:"Pontano Sans",sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--f-b); background:var(--paper); color:var(--ink); line-height:1.7; overflow-x:hidden; }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  ::selection{ background:var(--leaf); color:#fff; }
+  .wrap{ max-width:1180px; margin:0 auto; }
+  section{ padding:4rem 1.4rem; }
+  .eyebrow{ font-size:.66rem; letter-spacing:.28em; text-transform:uppercase; color:var(--leaf); display:flex; align-items:center; gap:.6rem; font-weight:500; }
+  .eyebrow::before{ content:""; width:24px; height:1px; background:var(--leaf); }
+  h2{ font-family:var(--f-d); font-weight:500; font-size:2rem; line-height:1.12; letter-spacing:-.015em; margin-top:.5rem; }
+  h2 em{ font-style:italic; font-weight:400; color:var(--timber); }
+  .intro{ color:var(--ink-soft); font-weight:300; max-width:60ch; margin-top:.8rem; }
+  .btn{ display:inline-flex; align-items:center; gap:.5rem; background:var(--forest); color:#F4F2EA; padding:.9rem 1.7rem; border-radius:3px; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600; transition:.4s; cursor:pointer; border:none; }
+  .btn:hover{ background:var(--forest-deep); transform:translateY(-2px); }
+  .btn.ghost{ background:transparent; color:#F4F2EA; box-shadow:inset 0 0 0 1px rgba(244,242,234,.55); }
+  .btn.ghost:hover{ background:rgba(244,242,234,.12); }
+  .reveal{ opacity:0; transform:translateY(22px); transition:.9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:none; }
+  .fill{ background:var(--fill-bg); color:var(--fill); border:1px dashed rgba(138,100,40,.45); border-radius:3px; padding:.05em .5em; font-style:normal; font-weight:500; white-space:nowrap; }
+  nav{ position:absolute; top:0; left:0; right:0; z-index:30; display:flex; justify-content:space-between; align-items:center; padding:1.1rem 1.4rem; }
+  nav img{ height:46px; filter:brightness(0) invert(1); }
+  .nav-links{ display:none; gap:1.3rem; align-items:center; }
+  .nav-links a{ color:rgba(244,242,234,.92); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; }
+  .hero{ position:relative; min-height:96svh; display:flex; flex-direction:column; justify-content:flex-end; padding:2rem 1.4rem 3.2rem; overflow:hidden; color:#F4F2EA; }
+  .hero__bg{ position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; background-image:url("https://video.squarespace-cdn.com/content/v1/6a3104495e46eb5dfa0b544b/f2fd72dd-6fb2-4d33-82ef-90a40888818e/thumbnail"); filter:saturate(1.15) brightness(1.02); animation:kb 24s ease-in-out infinite alternate; }
+  @keyframes kb{ from{transform:scale(1.06)} to{transform:scale(1.16) translateY(-2%)} }
+  .hero__grade{ position:absolute; inset:0; z-index:1; background:linear-gradient(to top, rgba(21,42,26,.82), rgba(21,42,26,.15) 55%, rgba(21,42,26,.25)); }
+  .hero__in{ position:relative; z-index:5; }
+  .flag{ font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--leaf-bright); font-weight:500; }
+  .hero h1{ font-family:var(--f-d); font-weight:500; font-size:2.9rem; line-height:1.0; letter-spacing:-.015em; margin-top:1rem; text-shadow:0 2px 30px rgba(0,0,0,.35); }
+  .hero h1 em{ font-style:italic; font-weight:400; color:var(--leaf-bright); }
+  .hero p{ margin-top:1.2rem; max-width:46ch; font-weight:300; color:rgba(244,242,234,.92); }
+  .hero .cta{ display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.6rem; }
+  .stats{ background:var(--paper-2); border-bottom:1px solid var(--line); }
+  .stats .wrap{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.6rem 1rem; }
+  .stat .n{ font-family:var(--f-d); font-weight:500; font-size:1.8rem; color:var(--forest); line-height:1; }
+  .stat .l{ font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-top:.5rem; }
+  .about .cols{ display:grid; gap:1.5rem; margin-top:1.4rem; }
+  .about p{ color:var(--ink-soft); font-weight:300; max-width:66ch; }
+  .lead{ font-family:var(--f-d); font-weight:400; font-size:1.5rem; line-height:1.35; color:var(--ink)!important; max-width:24ch; }
+  .lead em{ font-style:italic; color:var(--timber); }
+  .products{ background:var(--paper-2); }
+  .p-grid{ display:grid; grid-template-columns:1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:2.2rem; }
+  .p-card{ background:var(--paper); padding:1.9rem 1.5rem; transition:background .4s; cursor:pointer; }
+  .p-card:hover{ background:#fff; }
+  .p-card svg.ico{ width:44px; height:44px; stroke:var(--forest); fill:none; stroke-width:1.4; margin-bottom:1rem; }
+  .p-card h3{ font-family:var(--f-d); font-weight:500; font-size:1.28rem; }
+  .p-card p{ color:var(--ink-soft); font-weight:300; font-size:.9rem; margin-top:.5rem; }
+  .p-card .go{ margin-top:.9rem; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--leaf); opacity:0; transition:.4s; }
+  .p-card:hover .go{ opacity:1; }
+  .sp-table{ width:100%; border-collapse:collapse; margin-top:2rem; font-size:.9rem; }
+  .sp-table th{ text-align:left; font-weight:500; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); padding:.7rem .6rem; border-bottom:2px solid var(--line); }
+  .sp-table td{ padding:.9rem .6rem; border-bottom:1px solid var(--line); vertical-align:top; }
+  .sp-table td:first-child{ font-family:var(--f-d); font-size:1.05rem; color:var(--forest); }
+  .millvid{ position:relative; height:58vh; overflow:hidden; display:flex; align-items:center; justify-content:center; background:#0a120b; color:#F4F2EA; }
+  .millvid__poster{ position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.72); animation:kb 22s ease-in-out infinite alternate; background-image:url("https://images.squarespace-cdn.com/content/6a3104495e46eb5dfa0b544b/545d8268-fdb0-46ab-9603-582ad6d3d9d8/IMG_4530.png"); }
+  .millvid::after{ content:""; position:absolute; inset:0; background:linear-gradient(rgba(21,42,26,.3),rgba(21,42,26,.5)); }
+  .millvid__ui{ position:relative; z-index:3; text-align:center; }
+  .play{ width:70px; height:70px; border-radius:50%; margin:0 auto .9rem; display:flex; align-items:center; justify-content:center; background:rgba(244,242,234,.16); backdrop-filter:blur(4px); border:1px solid rgba(244,242,234,.6); }
+  .play::before{ content:""; border-left:18px solid #F4F2EA; border-top:11px solid transparent; border-bottom:11px solid transparent; margin-left:5px; }
+  .millvid .live{ position:absolute; top:1.1rem; left:1.1rem; z-index:3; display:flex; align-items:center; gap:.5rem; font-size:.62rem; letter-spacing:.24em; text-transform:uppercase; }
+  .millvid .live b{ width:8px; height:8px; border-radius:50%; background:#d9603e; box-shadow:0 0 10px #d9603e; }
+  .millvid__ui .e{ font-size:.64rem; letter-spacing:.3em; text-transform:uppercase; color:var(--leaf-bright); }
+  .millvid__ui h3{ font-family:var(--f-d); font-weight:500; font-size:1.6rem; margin-top:.4rem; }
+  .millvid__ui .lbl{ margin-top:.5rem; font-size:.78rem; color:rgba(244,242,234,.78); }
+  .fac__img{ position:relative; height:52vh; overflow:hidden; }
+  .fac__img img{ width:100%; height:100%; object-fit:cover; }
+  .fac__body{ background:var(--paper); padding:3rem 1.4rem; }
+  .fac__body h3{ font-family:var(--f-d); font-weight:500; font-size:1.7rem; line-height:1.14; margin:.5rem 0 1.2rem; max-width:24ch; }
+  .fac__list{ display:grid; grid-template-columns:1fr; gap:.7rem; font-size:.92rem; color:var(--ink-soft); }
+  .fac__list div{ border-top:1px solid var(--line); padding-top:.7rem; }
+  .fac__list b{ color:var(--ink); font-weight:500; }
+  .comply{ background:var(--forest-deep); color:#F4F2EA; }
+  .comply .eyebrow{ color:var(--leaf-bright); } .comply .eyebrow::before{ background:var(--leaf-bright); }
+  .comply h2{ color:#F4F2EA; } .comply h2 em{ color:var(--timber-soft); }
+  .comply .intro{ color:rgba(244,242,234,.75); }
+  .comply .grid{ display:grid; grid-template-columns:1fr; gap:1.2rem; margin-top:2rem; }
+  .comply .item{ background:rgba(0,0,0,.16); border:1px solid rgba(244,242,234,.14); border-radius:4px; padding:1.4rem; }
+  .comply .item h4{ font-family:var(--f-d); font-weight:500; font-size:1.12rem; margin-bottom:.5rem; }
+  .comply .item p{ color:rgba(244,242,234,.72); font-weight:300; font-size:.9rem; }
+  .ex-grid{ display:grid; grid-template-columns:1fr; gap:1.2rem; margin-top:2rem; }
+  .ex-grid .box{ border:1px solid var(--line); border-radius:4px; padding:1.4rem; background:var(--paper-2); }
+  .ex-grid .box .t{ font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--leaf); margin-bottom:.6rem; font-weight:500; }
+  .ex-grid .box p{ color:var(--ink-soft); font-weight:300; font-size:.92rem; }
+  .why{ background:var(--paper-2); }
+  .why-grid{ display:grid; grid-template-columns:1fr; gap:1.4rem; margin-top:2rem; }
+  .why-item{ border-top:2px solid var(--forest); padding-top:1rem; }
+  .why-item h4{ font-family:var(--f-d); font-weight:500; font-size:1.15rem; }
+  .why-item p{ color:var(--ink-soft); font-weight:300; font-size:.9rem; margin-top:.4rem; }
+  .qa{ border-bottom:1px solid var(--line); padding:1.2rem 0; }
+  .qa summary{ font-family:var(--f-d); font-size:1.1rem; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:1rem; }
+  .qa summary::-webkit-details-marker{ display:none; }
+  .qa summary::after{ content:"+"; color:var(--leaf); }
+  .qa[open] summary::after{ content:"–"; }
+  .qa p{ color:var(--ink-soft); font-weight:300; margin-top:.8rem; font-size:.92rem; }
+  .cta{ position:relative; text-align:center; overflow:hidden; color:#F4F2EA; }
+  .cta::before{ content:""; position:absolute; inset:0; background-size:cover; background-position:center; background-image:url("https://video.squarespace-cdn.com/content/v1/6a3104495e46eb5dfa0b544b/f2fd72dd-6fb2-4d33-82ef-90a40888818e/thumbnail"); }
+  .cta::after{ content:""; position:absolute; inset:0; background:linear-gradient(rgba(21,42,26,.82),rgba(21,42,26,.9)); }
+  .cta > *{ position:relative; z-index:2; }
+  .cta h2{ font-size:2.1rem; color:#F4F2EA; } .cta h2 em{ color:var(--leaf-bright); }
+  .cta .chk{ max-width:520px; margin:1.4rem auto; text-align:left; background:rgba(0,0,0,.22); border:1px solid rgba(244,242,234,.16); border-radius:4px; padding:1.3rem 1.5rem; }
+  .cta .chk .t{ font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--leaf-bright); margin-bottom:.7rem; }
+  .cta .chk li{ list-style:none; padding:.35rem 0; color:rgba(244,242,234,.82); font-size:.9rem; font-weight:300; border-bottom:1px solid rgba(244,242,234,.08); }
+  .cta .chk li::before{ content:"✓ "; color:var(--leaf-bright); }
+  footer{ background:var(--forest-dark); color:rgba(244,242,234,.72); padding:3rem 1.4rem; }
+  footer .fm{ font-family:var(--f-d); font-size:1.4rem; letter-spacing:.16em; color:#F4F2EA; }
+  footer .frow{ display:grid; grid-template-columns:1fr; gap:1.4rem; margin-top:1.4rem; font-size:.86rem; }
+  footer .frow .t{ font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--leaf-bright); margin-bottom:.5rem; }
+  .banner{ background:var(--fill-bg); color:var(--fill); text-align:center; padding:.8rem 1.4rem; font-size:.8rem; border-bottom:1px solid rgba(138,100,40,.3); }
+  .detail{ position:fixed; inset:0; z-index:100; background:var(--paper); overflow-y:auto; transform:translateX(100%); transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+  .detail.open{ transform:none; }
+  .d-hero{ position:relative; min-height:38vh; display:flex; flex-direction:column; justify-content:flex-end; padding:2rem 1.4rem; background:linear-gradient(150deg,var(--forest),var(--forest-deep)); color:#F4F2EA; }
+  .back{ display:inline-flex; align-items:center; gap:.5rem; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:auto; cursor:pointer; background:none; border:none; color:#F4F2EA; }
+  .d-ico{ width:54px; height:54px; stroke:var(--leaf-bright); fill:none; stroke-width:1.4; margin-bottom:.7rem; }
+  .d-hero h1{ font-family:var(--f-d); font-weight:500; font-size:2.4rem; line-height:1; }
+  .d-hero .sub{ margin-top:.7rem; color:rgba(244,242,234,.88); font-weight:300; max-width:46ch; }
+  .d-body{ padding:2.4rem 1.4rem; max-width:900px; margin:0 auto; }
+  .d-body h4{ font-family:var(--f-d); font-weight:500; font-size:1.2rem; margin:0 0 1rem; }
+  .d-body h4 .n{ font-style:italic; color:var(--timber); font-size:.85rem; margin-right:.5rem; }
+  .photo-slot{ height:190px; border:1px dashed rgba(138,100,40,.5); border-radius:4px; display:flex; align-items:center; justify-content:center; text-align:center; color:var(--fill); font-size:.82rem; margin-bottom:2rem; background:var(--fill-bg); }
+  .spec{ width:100%; border-collapse:collapse; margin-bottom:2.2rem; }
+  .spec tr{ border-bottom:1px solid var(--line); }
+  .spec td{ padding:.8rem 0; font-size:.9rem; }
+  .spec td:first-child{ color:var(--ink-soft); width:40%; }
+  .apps{ display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.2rem; }
+  .apps span{ border:1px solid var(--line); border-radius:40px; padding:.5rem 1rem; font-size:.85rem; }
+  @media (min-width:760px){
+    section{ padding:5.5rem 3rem; } nav{ padding:1.4rem 3rem; } .nav-links{ display:flex; }
+    .hero{ padding:2rem 3rem 4.5rem; } .hero h1{ font-size:4.6rem; }
+    h2{ font-size:2.6rem; }
+    .stats .wrap{ grid-template-columns:repeat(4,1fr); } .stat .n{ font-size:2.4rem; }
+    .about .cols{ grid-template-columns:1fr 1.4fr; align-items:start; }
+    .p-grid{ grid-template-columns:repeat(3,1fr); }
+    .comply .grid{ grid-template-columns:repeat(3,1fr); } .ex-grid{ grid-template-columns:repeat(3,1fr); }
+    .why-grid{ grid-template-columns:repeat(2,1fr); gap:2.4rem; }
+    .fac__list{ grid-template-columns:repeat(2,1fr); } .fac__body{ padding:4rem 3rem; } .fac__body h3{ font-size:2.4rem; }
+    footer .frow{ grid-template-columns:repeat(3,1fr); }
+    .d-hero{ padding:3rem; min-height:42vh; } .d-hero h1{ font-size:3.4rem; } .d-body{ padding:3.5rem 3rem; }
+  }
+  @media (prefers-reduced-motion:reduce){ *{ animation:none!important; } .reveal{ opacity:1; transform:none; } }
+</style>
+</head>
+<body>
+<div class="banner">Malaysian hardwood manufacturer & exporter</div>
+<header class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__grade"></div>
+  <nav>
+    <img src="https://images.squarespace-cdn.com/content/6a3104495e46eb5dfa0b544b/ef630dcd-79cc-42f8-9a34-9adb6d3fc5d2/Wexxim+Logo.+transparent.png" alt="WEXXIM" />
+    <div class="nav-links"><a href="#products">Products</a><a href="#species">Species</a><a href="#facilities">Facilities</a><a href="#export">Export</a><a href="#contact">Contact</a></div>
+  </nav>
+  <div class="hero__in">
+    <div class="flag">Malaysian hardwood · Manufacturer &amp; exporter since 2001</div>
+    <h1>Integrated timber,<br>from log to <em>finished board.</em></h1>
+    <p>A Malaysia-based hardwood manufacturer supplying solid timber products worldwide — through integrated sawmilling, kiln drying, and processing.</p>
+    <div class="cta"><a class="btn" href="#contact">Request a quote →</a><a class="btn ghost" href="#products">View products</a></div>
+  </div>
+</header>
+<section class="stats"><div class="wrap">
+  <div class="stat"><div class="n">Since 2001</div><div class="l">20+ years experience</div></div>
+  <div class="stat"><div class="n">[ monthly output m3 ]</div><div class="l">Monthly output</div></div>
+  <div class="stat"><div class="n">[ kiln capacity m3 ]</div><div class="l">Kiln capacity</div></div>
+  <div class="stat"><div class="n">9 species</div><div class="l">Malaysian hardwood</div></div>
+</div></section>
+<section class="about" id="about"><div class="wrap reveal">
+  <div class="eyebrow">About Wexxim</div>
+  <div class="cols">
+    <p class="lead">Two decades of milling Malaysian hardwood, <em>kept in the family.</em></p>
+    <div>
+      <p style="margin-bottom:1rem">Since 2001, Wexxim Holdings has manufactured and supplied solid timber products from Malaysia to customers across local and international markets.</p>
+      <p style="margin-bottom:1rem">With integrated capabilities in sawmilling, kiln drying, and processing, we keep tight control over quality, consistency, and supply reliability — from raw log to finished board.</p>
+      <p>Over two decades of experience backs every order, with dependable timber and long-term partnerships built on trust and consistency.</p>
+    </div>
+  </div>
+</div></section>
+<section class="products" id="products"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">Our Products</div>
+    <h2>From logs to <em>solid timber products.</em></h2>
+    <p class="intro">Solutions for construction, interior, exterior, furniture, and industrial applications. <strong style="color:var(--forest);font-weight:500">Tap any product for full specs →</strong></p>
+  </div>
+  <div class="p-grid reveal" id="grid"></div>
+</div></section>
+<section class="species" id="species"><div class="wrap reveal">
+  <div class="eyebrow">Timber Species</div>
+  <h2>A diverse range of <em>Malaysian hardwood.</em></h2>
+  <p class="intro">Each species with its botanical name, density and character.</p>
+  <table class="sp-table">
+    <thead><tr><th>Species</th><th>Botanical name</th><th>Density (air-dry)</th><th>Character / uses</th></tr></thead>
+    <tbody>
+      <tr><td>Merbau</td><td>Intsia palembanica</td><td>~800 kg/m3</td><td>[ uses ]</td></tr>
+      <tr><td>Perah</td><td>[ latin ]</td><td>[ ___ ]</td><td>[ uses ]</td></tr>
+      <tr><td>Sepetir</td><td>[ latin ]</td><td>[ ___ ]</td><td>[ uses ]</td></tr>
+      <tr><td>Kembang Semangkok</td><td>[ latin ]</td><td>[ ___ ]</td><td>[ uses ]</td></tr>
+      <tr><td>Pelong</td><td>[ latin ]</td><td>[ ___ ]</td><td>[ uses ]</td></tr>
+      <tr><td>Mempening</td><td>[ latin ]</td><td>[ ___ ]</td><td>[ uses ]</td></tr>
+      <tr><td>Tulang Daing</td><td>[ latin ]</td><td>[ ___ ]</td><td>[ uses ]</td></tr>
+      <tr><td>Minyak Beruk</td><td>[ latin ]</td><td>[ ___ ]</td><td>[ uses ]</td></tr>
+      <tr><td>Medang</td><td>[ latin ]</td><td>[ ___ ]</td><td>[ uses ]</td></tr>
+    </tbody>
+  </table>
+</div></section>
+<section class="millvid" style="padding:0">
+  <div class="millvid__poster"></div>
+  <div class="live"><b></b>Looping video</div>
+  <div class="millvid__ui">
+    <div class="play"></div>
+    <div class="e">Inside the mill</div>
+    <h3>Real people, real production.</h3>
+    <div class="lbl">Employee / machine video goes here (autoplay, muted, looping)</div>
+  </div>
+</section>
+<section id="facilities" style="padding:0">
+  <div class="fac__img"><img src="https://images.squarespace-cdn.com/content/6a3104495e46eb5dfa0b544b/e8fdc7b7-cb70-48e8-8c3f-568cca3449b9/building-factory-2.png" alt="Facility" /></div>
+  <div class="fac__body"><div class="wrap">
+    <div class="eyebrow">Facilities · Pahang, Malaysia</div>
+    <h3>Integrated manufacturing, under one roof.</h3>
+    <div class="fac__list">
+      <div><b>Sawmilling lines</b> · [ number ]</div>
+      <div><b>Kiln chambers</b> · [ number / capacity ]</div>
+      <div><b>Planing / moulding (S4S, T&amp;G)</b> · [ equipment ]</div>
+      <div><b>Finger-jointing &amp; lamination</b> · [ equipment ]</div>
+      <div><b>Monthly capacity</b> · [ ___ m3 ]</div>
+      <div><b>Site area</b> · [ ___ ]</div>
+    </div>
+  </div></div>
+</section>
+<section class="comply" id="compliance"><div class="wrap reveal">
+  <div class="eyebrow">Compliance &amp; Documentation</div>
+  <h2>Export paperwork, <em>handled.</em></h2>
+  <p class="intro">Full documentation for smooth cross-border sourcing — including Lacey Act support for U.S. imports.</p>
+  <div class="grid">
+    <div class="item"><h4>Species &amp; origin declaration</h4><p>Botanical species names and country-of-harvest records — supporting U.S. Lacey Act and other import filings.</p></div>
+    <div class="item"><h4>Phytosanitary certificate</h4><p>Issued per shipment for plant-health clearance at destination.</p></div>
+    <div class="item"><h4>Legal &amp; registered</h4><p>Company reg. [ number ] · MTIB reg. [ number ] — a legally operating Malaysian manufacturer.</p></div>
+    <div class="item"><h4>ISPM-15 packaging</h4><p>Heat-treated, marked wood packaging &amp; pallets for export.</p></div>
+    <div class="item"><h4>Grading &amp; moisture</h4><p>Consistent grading to [ standard ], moisture content certified per order.</p></div>
+    <div class="item"><h4>Certifications (optional)</h4><p>[ add FSC/PEFC/MTLAS here if obtained ]</p></div>
+  </div>
+</div></section>
+<section class="export" id="export"><div class="wrap reveal">
+  <div class="eyebrow">Export &amp; Logistics</div>
+  <h2>Serving markets <em>worldwide.</em></h2>
+  <div class="ex-grid">
+    <div class="box"><div class="t">Markets served</div><p>Malaysia · China · [ other ] — and expanding internationally.</p></div>
+    <div class="box"><div class="t">Shipping terms</div><p>FOB [ port ] · CIF to [ destination ]</p></div>
+    <div class="box"><div class="t">Container loading</div><p>[ ___ m3/20ft ] · [ ___ m3/40ft ]</p></div>
+    <div class="box"><div class="t">Lead time</div><p>Production [ ___ days ] · transit [ ___ weeks ]</p></div>
+    <div class="box"><div class="t">Minimum order</div><p>[ MOQ ]</p></div>
+    <div class="box"><div class="t">Units</div><p>Quoted in m3 &amp; board feet · dimensions in mm &amp; inches.</p></div>
+  </div>
+</div></section>
+<section class="why" id="why"><div class="wrap reveal">
+  <div class="eyebrow">Why Wexxim</div>
+  <h2>Built for <em>long-term supply.</em></h2>
+  <div class="why-grid">
+    <div class="why-item"><h4>Integrated manufacturing</h4><p>Log to finished board under our own control — better quality and consistency.</p></div>
+    <div class="why-item"><h4>Direct from the mill</h4><p>No middleman markup. Factory-direct pricing and same-day quotes.</p></div>
+    <div class="why-item"><h4>Diverse species</h4><p>Nine Malaysian hardwood species for a wide range of applications.</p></div>
+    <div class="why-item"><h4>Export-documented</h4><p>Species declaration, phytosanitary and ISPM-15 paperwork handled.</p></div>
+  </div>
+</div></section>
+<section class="why faq" id="faq" style="background:var(--paper)"><div class="wrap reveal">
+  <div class="eyebrow">FAQ</div>
+  <h2>Common <em>questions.</em></h2>
+  <details class="qa"><summary>What products do you manufacture?</summary><p>Sawn timber, S4S, laminated wood panels, T&amp;G, stairboards, fingerjoint, and tabletops — in a range of Malaysian hardwood species.</p></details>
+  <details class="qa"><summary>What moisture content do you kiln-dry to?</summary><p>We kiln-dry to your target — typically [ 6-12% ], certified per order.</p></details>
+  <details class="qa"><summary>Do you export, and can you handle documentation?</summary><p>Yes — we export internationally and provide species/origin declarations, phytosanitary certificates and ISPM-15 packaging, including Lacey Act support for the U.S.</p></details>
+  <details class="qa"><summary>Do you have FSC or PEFC certification?</summary><p>[ answer honestly: not yet, but we provide legality and origin documents ]</p></details>
+  <details class="qa"><summary>What is your minimum order and lead time?</summary><p>MOQ [ ___ ]; production [ ___ days ], transit [ ___ weeks ].</p></details>
+</div></section>
+<section class="cta" id="contact">
+  <div class="eyebrow" style="justify-content:center;color:var(--leaf-bright)">Request a Quote</div>
+  <h2>Tell us what you're <em>sourcing.</em></h2>
+  <div class="chk">
+    <div class="t">To quote fast, send us:</div>
+    <ul>
+      <li>Product (Sawn Timber, S4S, T&amp;G, etc.)</li>
+      <li>Species &amp; grade</li>
+      <li>Dimensions &amp; quantity (m3 or board feet)</li>
+      <li>Target moisture content</li>
+      <li>Destination port / city</li>
+      <li>Required delivery date</li>
+    </ul>
+  </div>
+  <a class="btn" href="#" style="background:var(--leaf-bright);color:#14210c">Enquire on WhatsApp →</a>
+  <p style="margin-top:1rem;font-size:.85rem">enquiry@wexxim.com · WhatsApp [ number ]</p>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="fm">WEXXIM</div>
+    <div class="frow">
+      <div><div class="t">Head office</div>[ head office address ]</div>
+      <div><div class="t">Factory</div>[ factory address, Pahang ]</div>
+      <div><div class="t">Contact</div>enquiry@wexxim.com<br>[ phone / WhatsApp ]</div>
+    </div>
+    <p style="margin-top:1.5rem;font-size:.76rem">Wexxim Holdings · Integrated Timber Manufacturer &amp; Exporter · Malaysia</p>
+  </div>
+</footer>
+<div class="detail" id="detail">
+  <div class="d-hero">
+    <button class="back" onclick="closeDetail()">← Back to products</button>
+    <svg class="d-ico" id="dIco" viewBox="0 0 48 48"></svg>
+    <h1 id="dName"></h1>
+    <p class="sub" id="dSub"></p>
+  </div>
+  <div class="d-body">
+    <div class="photo-slot">Product photo goes here</div>
+    <h4><span class="n">01</span>Specifications</h4>
+    <table class="spec" id="dSpec"></table>
+    <h4><span class="n">02</span>Applications</h4>
+    <div class="apps" id="dApps"></div>
+    <h4><span class="n">03</span>Available species</h4>
+    <div class="apps" id="dSp"></div>
+    <a class="btn" href="#contact" onclick="closeDetail()">Request quote &amp; spec sheet →</a>
+  </div>
+</div>
+<script>
+  const ICONS={sawn:'<rect x="6" y="14" width="36" height="7" rx="1"/><rect x="6" y="24" width="36" height="7" rx="1"/><rect x="6" y="34" width="36" height="7" rx="1"/>',s4s:'<rect x="8" y="16" width="32" height="16" rx="1.5"/><path d="M8 20h32M8 28h32" stroke-width="0.7"/>',lam:'<rect x="7" y="15" width="34" height="18" rx="1"/><path d="M7 21h34M7 27h34"/>',tg:'<path d="M8 18h20v5h6v5h-6v5H8z"/><path d="M40 18H28v5h-6v5h6v5h12z"/>',stair:'<path d="M8 40V32h8v-8h8v-8h16"/>',finger:'<path d="M6 24h6l3-4 3 4 3-4 3 4 3-4 3 4 3-4 3 4h6"/>',table:'<ellipse cx="24" cy="18" rx="17" ry="6"/><path d="M10 20v14M38 20v14"/>'};
+  const SPECIES=['Perah','Sepetir','Kembang Semangkok','Pelong','Merbau','Mempening','Tulang Daing','Minyak Beruk','Medang'];
+  const F='[ fill ]';
+  const PRODUCTS=[
+    {k:'sawn',name:'Sawn Timber',sub:'Hardwood timber processed for construction, manufacturing, and industrial applications.',apps:['Construction','Manufacturing','Industrial'],spec:[['Thickness',F+' mm / in'],['Width',F+' mm / in'],['Length',F+' mm / ft'],['Grade',F],['Moisture content',F+' %'],['Surface','Rough sawn']]},
+    {k:'s4s',name:'S4S',sub:'Precision-planed timber, surfaced four sides — for furniture, interior, and woodworking.',apps:['Furniture','Interior','Woodworking'],spec:[['Thickness',F+' mm / in'],['Width',F+' mm / in'],['Length',F+' mm / ft'],['Grade',F],['Moisture content',F+' %'],['Surface','Planed 4 sides']]},
+    {k:'lam',name:'Laminated Wood Panel',sub:'Value-added wood panels for furniture, interior, and industrial applications.',apps:['Furniture','Interior','Industrial'],spec:[['Thickness',F+' mm'],['Panel size',F],['Lamella width',F],['Glue bond',F],['Moisture content',F+' %'],['Finish',F]]},
+    {k:'tg',name:'T&G',sub:'Tongue-and-groove profiles for flooring, wall cladding, and ceiling applications.',apps:['Flooring','Wall cladding','Ceiling'],spec:[['Thickness',F+' mm'],['Cover width',F],['Length',F],['Profile','Tongue & groove'],['Grade',F],['Moisture content',F+' %']]},
+    {k:'stair',name:'Stairboard',sub:'Solid wood stair components for residential and commercial projects.',apps:['Residential','Commercial','Interior'],spec:[['Thickness',F+' mm'],['Width',F],['Length',F],['Type','Tread / riser / stringer'],['Grade',F],['Finish',F]]},
+    {k:'finger',name:'Fingerjoint',sub:'Engineered timber designed for improved stability and material efficiency.',apps:['Furniture','Interior','Structural'],spec:[['Thickness',F+' mm'],['Width',F],['Length',F],['Joint','Finger-jointed'],['Glue bond',F],['Moisture content',F+' %']]},
+    {k:'table',name:'Tabletop',sub:'Solid wood tabletops for furniture, hospitality, and interior applications.',apps:['Furniture','Hospitality','Interior'],spec:[['Thickness',F+' mm'],['Size',F],['Edge profile',F],['Construction','Solid / laminated'],['Finish',F],['Moisture content',F+' %']]}
+  ];
+  const grid=document.getElementById('grid');
+  PRODUCTS.forEach((p,i)=>{const c=document.createElement('div');c.className='p-card';c.onclick=()=>openDetail(i);c.innerHTML='<svg class="ico" viewBox="0 0 48 48">'+ICONS[p.k]+'</svg><h3>'+p.name+'</h3><p>'+p.sub+'</p><div class="go">View details →</div>';grid.appendChild(c);});
+  const detail=document.getElementById('detail');
+  function openDetail(i){const p=PRODUCTS[i];document.getElementById('dIco').innerHTML=ICONS[p.k];document.getElementById('dName').textContent=p.name;document.getElementById('dSub').textContent=p.sub;document.getElementById('dSpec').innerHTML=p.spec.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>';}).join('');document.getElementById('dApps').innerHTML=p.apps.map(function(a){return '<span>'+a+'</span>';}).join('');document.getElementById('dSp').innerHTML=SPECIES.map(function(s){return '<span>'+s+'</span>';}).join('');detail.classList.add('open');detail.scrollTop=0;window.scrollTo(0,0);}
+  function closeDetail(){detail.classList.remove('open');}
+  const io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
